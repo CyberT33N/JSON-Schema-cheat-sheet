@@ -227,8 +227,8 @@ __________________________________
 
 <br><br>
 
-
-## Required Properties
+ 
+## Required Properties (http://json-schema.org/understanding-json-schema/reference/object.html#id3)
 - By default, the properties defined by the properties keyword are not required. However, one can provide a list of required properties using the required keyword. The required keyword takes an array of zero or more strings. Each of these strings must be unique.
 
 <br>
@@ -236,6 +236,7 @@ __________________________________
 - In the following example schema defining a user record, we require that each user has a name and e-mail address, but we don’t mind if they don’t provide their address or telephone number:
 
 ```javascript
+{
   "type": "object",
   "properties": {
     "name":      { "type": "string" },
@@ -244,6 +245,18 @@ __________________________________
     "telephone": { "type": "string" }
   },
   "required": ["name", "email"]
+}
+
+// valid
+{
+  "name": "William Shakespeare",
+  "email": "bill@stratford-upon-avon.co.uk"
+}
+
+// invalid
+{
+  "name": "William Shakespeare",
+  "address": "Henley Street, Stratford-upon-Avon, Warwickshire, England",
 }
 ```
 
@@ -266,6 +279,200 @@ __________________________________
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+
+## Property names (http://json-schema.org/understanding-json-schema/reference/object.html#id4)
+- The names of properties can be validated against a schema, irrespective of their values. This can be useful if you don’t want to enforce specific properties, but you want to make sure that the names of those properties follow a specific convention. You might, for example, want to enforce that all names are valid ASCII tokens so they can be used as attributes in a particular programming language.
+```javascript
+{
+  "type": "object",
+  "propertyNames": {
+    "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+  }
+}
+
+// valid
+{
+  "_a_proper_token_001": "value"
+}
+
+// invalid 
+{
+  "001 invalid": "value"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+
+## Size (http://json-schema.org/understanding-json-schema/reference/object.html#id5)
+- The number of properties on an object can be restricted using the minProperties and maxProperties keywords. Each of these must be a non-negative integer.
+```javascript
+{
+  "type": "object",
+  "minProperties": 2,
+  "maxProperties": 3
+}
+
+// invalid
+{}
+{ "a": 0 }
+{ "a": 0, "b": 1, "c": 2, "d": 3 }
+
+// valid
+{ "a": 0, "b": 1 }
+{ "a": 0, "b": 1, "c": 2 }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+
+## Dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id6)
+- The dependencies keyword allows the schema of the object to change based on the presence of certain special properties. There are two forms of dependencies in JSON Schema:
+<br> Property dependencies declare that certain other properties must be present if a given property is present.
+<br> Schema dependencies declare that the schema changes when a given property is present.
+
+
+
+<br><br>
+
+
+#### Property dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id7)
+- Let’s start with the simpler case of property dependencies. For example, suppose we have a schema representing a customer. If you have their credit card number, you also want to ensure you have a billing address. If you don’t have their credit card number, a billing address would not be required. We represent this dependency of one property on another using the dependencies keyword. The value of the dependencies keyword is an object. Each entry in the object maps from the name of a property, p, to an array of strings listing properties that are required whenever p is present.
+<br><br>
+In the following example, whenever a credit_card property is provided, a billing_address property must also be present:
+```javascript
+{
+  "type": "object",
+
+  "properties": {
+    "name": { "type": "string" },
+    "credit_card": { "type": "number" },
+    "billing_address": { "type": "string" }
+  },
+
+  "required": ["name"],
+
+  "dependencies": {
+    "credit_card": ["billing_address"]
+  }
+}
+
+
+// valid
+{
+  "name": "John Doe",
+  "credit_card": 5555555555555555,
+  "billing_address": "555 Debtor's Lane"
+}
+
+{
+  "name": "John Doe"
+}
+
+{
+  "name": "John Doe",
+  "billing_address": "555 Debtor's Lane"
+}
+
+
+
+// invalid
+{
+  "name": "John Doe",
+  "credit_card": 5555555555555555
+}
+```
 
 
 
