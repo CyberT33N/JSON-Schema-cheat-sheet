@@ -183,17 +183,69 @@ __________________________________
 }
 ```
 
+<br><br>
+
+## additionalProperties
+- The additionalProperties keyword is used to control the handling of extra stuff, that is, properties whose names are not listed in the properties keyword. By default any additional properties are allowed. The additionalProperties keyword may be either a boolean or an object. If additionalProperties is a boolean and set to false, no additional properties will be allowed.
+
+<br>
+
+- Example:
+```javascript
+{
+  "type": "object",
+  "properties": {
+    "number":      { "type": "number" },
+    "street_name": { "type": "string" },
+    "street_type": { "type": "string",
+                     "enum": ["Street", "Avenue", "Boulevard"]
+                   }
+  },
+  "additionalProperties": false
+}
+```
+
+<br><br>
+
+#### allow additional Properties of specific type
+- For example, one can allow additional properties, but only if they are each a string:
+```javascript
+{
+  "type": "object",
+  "properties": {
+    "number":      { "type": "number" },
+    "street_name": { "type": "string" },
+    "street_type": { "type": "string",
+                     "enum": ["Street", "Avenue", "Boulevard"]
+                   }
+  },
+  "additionalProperties": { "type": "string" }
+}
+```
 
 
 
+<br><br>
 
 
+## Required Properties
+- By default, the properties defined by the properties keyword are not required. However, one can provide a list of required properties using the required keyword. The required keyword takes an array of zero or more strings. Each of these strings must be unique.
 
+<br>
 
+- In the following example schema defining a user record, we require that each user has a name and e-mail address, but we don’t mind if they don’t provide their address or telephone number:
 
-
-
-
+```javascript
+  "type": "object",
+  "properties": {
+    "name":      { "type": "string" },
+    "email":     { "type": "string" },
+    "address":   { "type": "string" },
+    "telephone": { "type": "string" }
+  },
+  "required": ["name", "email"]
+}
+```
 
 
 
