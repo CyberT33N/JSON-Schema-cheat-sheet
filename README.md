@@ -165,6 +165,7 @@ __________________________________
 <br><br>
 
 # Properties (http://json-schema.org/understanding-json-schema/reference/object.html#properties)
+- The properties (key-value pairs) on an object are defined using the properties keyword. The value of properties is an object, where each key is the name of a property and each value is a JSON schema used to validate that property.
 
 <br>
 
@@ -184,6 +185,71 @@ __________________________________
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________
+__________________________________
+<br><br>
+
+# Enumerated values (https://json-schema.org/understanding-json-schema/reference/generic.html#id4)
+- The enum keyword is used to restrict a value to a fixed set of values. It must be an array with at least one element, where each element is unique.
+
+<br><br>
+
+The following is an example for validating street light colors:
+```javascript
+{
+  "type": "string",
+  "enum": ["red", "amber", "green"]
+}
+```
 
 
 
