@@ -18,6 +18,7 @@ Example:
 
 # For what we use JSON Schema?
 - Validate JSON Documents.
+- Transformation (as example XML to JSON)
 
 <br><br>
 
