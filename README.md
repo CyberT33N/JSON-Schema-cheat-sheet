@@ -2703,3 +2703,84 @@ __________________________________
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________
+__________________________________
+<br><br>
+
+# The $schema keyword (https://json-schema.org/understanding-json-schema/reference/schema.html#the-schema-keyword)
+- The $schema keyword is used to declare that a JSON fragment is actually a piece of JSON Schema. It also declares which version of the JSON Schema standard that the schema was written against. It is recommended that all JSON Schemas have a $schema entry, which must be at the root. Therefore most of the time, you’ll want this at the root of your schema:
+```javascript
+"$schema": "http://json-schema.org/draft/2019-09/schema#"
+```
+
+
+<br><br>
+
+## Advanced (https://json-schema.org/understanding-json-schema/reference/schema.html#advanced)
+- You should declare that your schema was written against a specific version of the JSON Schema standard and include the draft name in the path, for example:
+<br> http://json-schema.org/draft/2019-09/schema#
+<br> http://json-schema.org/draft-07/schema#
+<br> http://json-schema.org/draft-06/schema#
+<br> http://json-schema.org/draft-04/schema#
+
