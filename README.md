@@ -743,6 +743,126 @@ __________________________________
 
 
 
+<br><br>
+__________________________________
+__________________________________
+<br><br>
+
+
+
+
+# Array (https://json-schema.org/understanding-json-schema/reference/array.html#array)
+- Arrays are used for ordered elements. In JSON, each element in an array may be of a different type.
+
+<br>
+
+- Example:
+```javascript
+{ "type": "array" }
+
+/* valid */
+[1, 2, 3, 4, 5]
+[3, "different", { "types" : "of values" }]
+
+/* invalid */
+{"Not": "an array"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <br><br>
