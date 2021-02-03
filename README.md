@@ -368,6 +368,324 @@ Be careful, in practice, JSON schema validators are only required to accept the 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________
+__________________________________
+<br><br>
+
+
+
+
+# Numeric types (https://json-schema.org/understanding-json-schema/reference/numeric.html#numeric-types)
+- There are two numeric types in JSON Schema: integer and number. They share the same validation keywords.
+- JSON has no standard way to represent complex numbers, so there is no way to test for them in JSON Schema.
+
+
+
+<br><br>
+
+
+## integer (https://json-schema.org/understanding-json-schema/reference/numeric.html#id4)
+- The integer type is used for integral numbers.
+<br>
+- Example:
+```javascript
+{ "type": "integer" }
+
+
+/* valid */
+42
+-1
+
+
+
+/* invalid */
+
+// Floating point numbers are rejected:
+3.1415926
+
+// Numbers as strings are rejected:
+"42"
+```
+
+
+
+
+
+<br><br>
+
+
+## number (https://json-schema.org/understanding-json-schema/reference/numeric.html#id5)
+- The number type is used for any numeric type, either integers or floating point numbers.
+<br>
+- Example:
+```javascript
+{ "type": "number" }
+
+
+/* valid */
+42
+-1
+
+//Simple floating point number:
+5.0
+
+// Exponential notation also works:
+2.99792458e8
+
+
+
+
+/* invalid */
+
+// Numbers as strings are rejected:
+"42"
+```
+
+
+
+
+
+
+
+<br><br>
+
+
+## Multiples (https://json-schema.org/understanding-json-schema/reference/numeric.html#id6)
+- Numbers can be restricted to a multiple of a given number, using the multipleOf keyword. It may be set to any positive number.
+<br>
+- Example:
+```javascript
+{
+    "type"       : "number",
+    "multipleOf" : 10
+}
+
+/* valid */
+0
+10
+20
+
+
+/* invalid */
+
+// Not a multiple of 10:
+23
+```
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+
+## Range (https://json-schema.org/understanding-json-schema/reference/numeric.html#id7)
+- Ranges of numbers are specified using a combination of the minimum and maximum keywords, (or exclusiveMinimum and exclusiveMaximum for expressing exclusive range).
+- If x is the value being validated, the following must hold true:
+<br> x ≥ minimum
+<br> x > exclusiveMinimum
+<br> x ≤ maximum
+<br> x < exclusiveMaximum
+
+<br><br>
+- Example:
+```javascript
+/* ---- EXAMPLE #1 ---- */
+{
+  "type": "number",
+  "minimum": 0,
+  "exclusiveMaximum": 100
+}
+
+
+/* valid */
+
+// minimum is inclusive, so 0 is valid:
+0
+10
+99
+
+
+
+/* invalid */
+
+// Less than minimum:
+-1
+
+// exclusiveMaximum is exclusive, so 100 is not valid:
+100
+
+// Greater than maximum:
+101
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---- EXAMPLE #2 ---- */
+{
+  "type": "number",
+  "minimum": 0,
+  "maximum": 100,
+  "exclusiveMaximum": true
+}
+
+
+/* valid */
+
+//exclusiveMinimum was not specified, so 0 is included:
+0
+10
+99
+
+
+/* invalid */
+
+// Less than minimum:
+-1
+
+// exclusiveMaximum is true, so 100 is not included:
+100
+
+// Greater than maximum:
+101
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 __________________________________
 __________________________________
