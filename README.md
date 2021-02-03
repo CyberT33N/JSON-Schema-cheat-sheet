@@ -1618,36 +1618,6 @@ In the following example, whenever a credit_card property is provided, a billing
 
 
 
-<br><br>
-__________________________________
-__________________________________
-<br><br>
-
-# Enumerated values (https://json-schema.org/understanding-json-schema/reference/generic.html#id4)
-- The enum keyword is used to restrict a value to a fixed set of values. It must be an array with at least one element, where each element is unique.
-
-<br><br>
-
-The following is an example for validating street light colors:
-```javascript
-{
-  "type": "string",
-  "enum": ["red", "amber", "green"]
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1754,5 +1724,153 @@ The examples keyword is a place to provide an array of examples that validate ag
 ## Comments (https://json-schema.org/understanding-json-schema/reference/generic.html#comments)
 - The $comment keyword is strictly intended for adding comments to the JSON schema source. Its value must always be a string. Unlike the annotations title, description and examples, JSON schema implementations aren’t allowed to attach any meaning or behavior to it whatsoever, and may even strip them at any time. Therefore, they are useful for leaving notes to future editors of a JSON schema, (which is quite likely your future self), but should not be used to communicate to users of the schema.
 
+
+
+
+
+
+
+
+
+<br><br>
+
+
+
+
+## Enumerated values (https://json-schema.org/understanding-json-schema/reference/generic.html#id4)
+- The enum keyword is used to restrict a value to a fixed set of values. It must be an array with at least one element, where each element is unique.
+
+<br><br>
+
+The following is an example for validating street light colors:
+```javascript
+{
+  "type": "string",
+  "enum": ["red", "amber", "green"]
+}
+
+/* valid */
+"red"
+
+/* invalid */
+"blue"
+
+
+
+
+
+
+
+
+
+
+/* ---- EXAMPLE #2 ---- */
+
+// You can use enum even without a type, to accept values of different types. Let’s extend the example to use null to indicate “off”, and also add 42, just for fun.
+{
+  "enum": ["red", "amber", "green", null, 42]
+}
+
+/* valid */
+"red"
+null
+42
+
+/* invalid */
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---- EXAMPLE #3 ---- */
+
+// However, in most cases, the elements in the enum array should also be valid against the enclosing schema:
+{
+  "type": "string",
+  "enum": ["red", "amber", "green", null]
+}
+
+/* valid */
+"red"
+
+/* invalid */
+null
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Constant values (https://json-schema.org/understanding-json-schema/reference/generic.html#id5)
+- The const keyword is used to restrict a value to a single value. For example, to if you only support shipping to the United States for export reasons:
+
+```javascript
+{
+  "properties": {
+    "country": {
+      "const": "United States of America"
+    }
+  }
+}
+
+/* valid */
+{ "country": "United States of America" }
+
+/* invalid */
+{ "country": "Canada" }
+```
+
+<br><br> 
+  
+It should be noted that const is merely syntactic sugar for an enum with a single element, therefore the following are equivalent:
+```javascript
+{ "const": "United States of America" }
+{ "enum": [ "United States of America" ] }
+```
 
 
