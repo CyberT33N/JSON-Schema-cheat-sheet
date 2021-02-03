@@ -565,6 +565,7 @@ __________________________________
 <br> x < exclusiveMaximum
 
 <br><br>
+
 - Example:
 ```javascript
 /* ---- EXAMPLE #1 ---- */
@@ -608,11 +609,6 @@ __________________________________
 
 
 
-
-
-```
-
-
 /* ---- EXAMPLE #2 ---- */
 {
   "type": "number",
@@ -640,7 +636,11 @@ __________________________________
 
 // Greater than maximum:
 101
+
+
 ```
+
+
 
 
 
@@ -981,6 +981,33 @@ Each of these fields will have a different schema:
 
 
 
+<br><br>
+
+
+
+
+## Length (https://json-schema.org/understanding-json-schema/reference/array.html#id7)
+- The length of the array can be specified using the minItems and maxItems keywords. The value of each keyword must be a non-negative number. These keywords work whether doing List validation or Tuple validation.
+
+<br>
+
+- Example:
+```javascript
+{
+  "type": "array",
+  "minItems": 2,
+  "maxItems": 3
+}
+
+// valid
+[1, 2]
+[1, 2, 3]
+
+// invalid
+[]
+[1]
+[1, 2, 3, 4]
+```
 
 
 
@@ -988,6 +1015,36 @@ Each of these fields will have a different schema:
 
 
 
+
+
+
+
+<br><br>
+
+
+
+
+## Uniqueness (https://json-schema.org/understanding-json-schema/reference/array.html#id8)
+- A schema can ensure that each of the items in an array is unique. Simply set the uniqueItems keyword to true.
+
+<br>
+
+- Example:
+```javascript
+{
+  "type": "array",
+  "uniqueItems": true
+}
+
+// valid
+[1, 2, 3, 4, 5]
+[]
+
+// invalid
+[]
+[1]
+[1, 2, 3, 4]
+```
 
 
 
