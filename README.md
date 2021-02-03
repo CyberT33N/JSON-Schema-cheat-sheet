@@ -2043,3 +2043,422 @@ If the content is binary data, set contentEncoding to base64 and encode the cont
 /* valid */
 "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA..."
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________
+__________________________________
+<br><br>
+
+# Combining schemas (https://json-schema.org/understanding-json-schema/reference/combining.html#combining-schemas)
+- JSON Schema includes a few keywords for combining schemas together. Note that this doesn’t necessarily mean combining schemas from multiple files or JSON trees, though these facilities help to enable that and are described in Structuring a complex schema. Combining schemas may be as simple as allowing a value to be validated against multiple criteria at the same time.
+
+<br><br>
+
+For example, in the following schema, the anyOf keyword is used to say that the given value may be valid against any of the given subschemas. The first subschema requires a string with maximum length 5. The second subschema requires a number with a minimum value of 0. As long as a value validates against either of these schemas, it is considered valid against the entire combined schema.
+```javascript
+{
+  "anyOf": [
+    { "type": "string", "maxLength": 5 },
+    { "type": "number", "minimum": 0 }
+  ]
+}
+
+/* valid */
+"short"
+12
+
+/* invalid */
+"too long"
+-5
+```
+
+
+<br><br>
+
+The keywords used to combine schemas are:
+- allOf: Must be valid against all of the subschemas
+- anyOf: Must be valid against any of the subschemas
+- oneOf: Must be valid against exactly one of the subschemas
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br>
+
+## allOf (https://json-schema.org/understanding-json-schema/reference/combining.html#id5)
+- To validate against allOf, the given data must be valid against all of the given subschemas.
+```javascript
+{
+  "allOf": [
+    { "type": "string" },
+    { "maxLength": 5 }
+  ]
+}
+
+/* valid */
+"short"
+
+/* invalid */
+"too long"
+
+
+
+
+
+
+/* ---- EXAMPLE #2 ---- */
+{
+  "allOf": [
+    { "type": "string" },
+    { "type": "number" }
+  ]
+}
+
+
+
+
+
+
+<br><br><br><br>
+
+## allOf (https://json-schema.org/understanding-json-schema/reference/combining.html#id5)
+- To validate against allOf, the given data must be valid against all of the given subschemas.
+```javascript
+{
+
+/* invalid */
+"No way"
+-1
+
+
+
+
+
+
+
+
+
+
+
+/* ---- EXAMPLE #3 ---- */
+// It is important to note that the schemas listed in an allOf, anyOf or oneOf array know nothing of one another. While it might be surprising, allOf can not be used to “extend” a schema to add more details to it in the sense of object-oriented inheritance. For example, say you had a schema for an address in a definitions section, and want to extend it to include an address type:
+{
+  "definitions": {
+    "address": {
+      "type": "object",
+      "properties": {
+        "street_address": { "type": "string" },
+        "city":           { "type": "string" },
+        "state":          { "type": "string" }
+      },
+      "required": ["street_address", "city", "state"]
+    }
+  },
+
+  "allOf": [
+    { "$ref": "#/definitions/address" },
+    { "properties": {
+        "type": { "enum": [ "residential", "business" ] }
+      }
+    }
+  ]
+}
+
+/* valid */
+{
+   "street_address": "1600 Pennsylvania Avenue NW",
+   "city": "Washington",
+   "state": "DC",
+   "type": "business"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---- EXAMPLE #4 ---- */
+// This works, but what if we wanted to restrict the schema so no additional properties are allowed? One might try adding the highlighted line below:
+{
+  "definitions": {
+    "address": {
+      "type": "object",
+      "properties": {
+        "street_address": { "type": "string" },
+        "city":           { "type": "string" },
+        "state":          { "type": "string" }
+      },
+      "required": ["street_address", "city", "state"]
+    }
+  },
+
+  "allOf": [
+    { "$ref": "#/definitions/address" },
+    { "properties": {
+        "type": { "enum": [ "residential", "business" ] }
+      }
+    }
+  ],
+
+  "additionalProperties": false
+}
+
+/* invalid */
+{
+   "street_address": "1600 Pennsylvania Avenue NW",
+   "city": "Washington",
+   "state": "DC",
+   "type": "business"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+## anyOf (https://json-schema.org/understanding-json-schema/reference/combining.html#anyof)
+- To validate against anyOf, the given data must be valid against any (one or more) of the given subschemas.
+```javascript
+{
+  "anyOf": [
+    { "type": "string" },
+    { "type": "number" }
+  ]
+}
+
+/* valid */
+"Yes"
+42
+
+/* invalid */
+{ "Not a": "string or number" }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+## oneOf (https://json-schema.org/understanding-json-schema/reference/combining.html#oneof)
+- To validate against oneOf, the given data must be valid against exactly one of the given subschemas.
+```javascript
+{
+  "oneOf": [
+    { "type": "number", "multipleOf": 5 },
+    { "type": "number", "multipleOf": 3 }
+  ]
+}
+
+/* valid */
+10
+9
+
+
+
+/* invalid */
+
+// Not a multiple of either 5 or 3.
+2
+
+// Multiple of both 5 and 3 is rejected.
+15
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+
+## not (https://json-schema.org/understanding-json-schema/reference/combining.html#id8)
+- This doesn’t strictly combine schemas, but it belongs in this chapter along with other things that help to modify the effect of schemas in some way. The not keyword declares that a instance validates if it doesn’t validate against the given subschema.
+<br><br>
+For example, the following schema validates against anything that is not a string:
+```javascript
+{ "not": { "type": "string" } }
+/* valid */
+10
+9
+
+
+
+/* invalid */
+
+// Not a multiple of either 5 or 3.
+42
+{ "key": "value" }
+
+// Multiple of both 5 and 3 is rejected.
+"I am a string"
+```
+
+
+
+
+
+
+
+
+
+
