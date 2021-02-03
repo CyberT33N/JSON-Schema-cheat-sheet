@@ -97,6 +97,9 @@ __________________________________
 - boolean
 - null
 
+
+
+
 <br><br>
 
 
@@ -138,7 +141,212 @@ __________________________________
 
 
 
+
+
+
+
+
+
 <br><br>
+__________________________________
+__________________________________
+<br><br>
+
+
+
+
+# string (https://json-schema.org/understanding-json-schema/reference/string.html#string)
+- In Python, "string" is analogous to the unicode type on Python 2.x, and the str type on Python 3.x.
+<br>
+- Example:
+```javascript
+{ "type": "string" }
+```
+
+<br><br>
+
+
+## Length (https://json-schema.org/understanding-json-schema/reference/string.html#id5)
+<br>
+- Example:
+```javascript
+{
+  "type": "string",
+  "minLength": 2,
+  "maxLength": 3
+}
+
+// valid
+"AB"
+"ABC"
+
+// invalid
+"A"
+"ABCD"
+```
+
+
+
+
+<br><br>
+
+
+## Regular Expressions (https://json-schema.org/understanding-json-schema/reference/string.html#id6)
+- The pattern keyword is used to restrict a string to a particular regular expression. The regular expression syntax is the one defined in JavaScript (ECMA 262 specifically). See Regular Expressions for more information.
+<br>
+- Example:
+```javascript
+{
+   "type": "string",
+   "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+}
+
+// valid
+"555-1212"
+"(888)555-1212"
+
+// invalid
+"(888)555-1212 ext. 532"
+"(800)FLOWERS"
+```
+
+
+
+
+
+
+
+
+
+<br><br>
+
+
+## Format (https://json-schema.org/understanding-json-schema/reference/string.html#id7)
+- The format keyword allows for basic semantic validation on certain kinds of string values that are commonly used. This allows values to be constrained beyond what the other tools in JSON Schema, including Regular Expressions can do.
+
+
+<br><br>
+
+#### Dates and times (https://json-schema.org/understanding-json-schema/reference/string.html#id9)
+- Dates and times are represented in RFC 3339, section 5.6. This is a subset of the date format also commonly known as ISO8601 format.
+```javascript
+/*
+"date-time": Date and time together, for example, 2018-11-13T20:20:39+00:00.
+"time": New in draft 7 Time, for example, 20:20:39+00:00
+"date": New in draft 7 Date, for example, 2018-11-13.
+*/
+```
+
+
+<br><br>
+
+#### Email addresses (https://json-schema.org/understanding-json-schema/reference/string.html#id10)
+```javascript
+/*
+"email": Internet email address, see RFC 5322, section 3.4.1.
+"idn-email": New in draft 7 The internationalized form of an Internet email address, see RFC 6531.
+*/
+```
+
+
+
+<br><br>
+
+#### Hostnames (https://json-schema.org/understanding-json-schema/reference/string.html#id11)
+```javascript
+/*
+"hostname": Internet host name, see RFC 1034, section 3.1.
+"idn-hostname": New in draft 7 An internationalized Internet host name, see RFC5890, section 2.3.2.3.
+*/
+```
+
+
+
+
+<br><br>
+
+#### IP Addresses (https://json-schema.org/understanding-json-schema/reference/string.html#id12)
+```javascript
+/*
+"ipv4": IPv4 address, according to dotted-quad ABNF syntax as defined in RFC 2673, section 3.2.
+"ipv6": IPv6 address, as defined in RFC 2373, section 2.2.
+*/
+```
+
+
+
+
+<br><br>
+
+#### Resource identifiers (https://json-schema.org/understanding-json-schema/reference/string.html#id13)
+```javascript
+/*
+"uri": A universal resource identifier (URI), according to RFC3986.
+"uri-reference": New in draft 6 A URI Reference (either a URI or a relative-reference), according to RFC3986, section 4.1.
+"iri": New in draft 7 The internationalized equivalent of a “uri”, according to RFC3987.
+"iri-reference": New in draft 7 The internationalized equivalent of a “uri-reference”, according to RFC3987
+If the values in the schema have the ability to be relative to a particular source path (such as a link from a webpage), it is generally better practice to use "uri-reference" (or "iri-reference") rather than "uri" (or "iri"). "uri" should only be used when the path must be absolute.
+*/
+```
+
+
+
+
+
+
+<br><br>
+
+#### URI template (https://json-schema.org/understanding-json-schema/reference/string.html#id14)
+```javascript
+/*
+"uri-template": New in draft 6 A URI Template (of any level) according to RFC6570. If you don’t already know what a URI Template is, you probably don’t need this value.
+*/
+```
+
+
+
+
+
+
+
+<br><br>
+
+#### JSON Pointer (https://json-schema.org/understanding-json-schema/reference/string.html#id15)
+```javascript
+/*
+"json-pointer": New in draft 6 A JSON Pointer, according to RFC6901. There is more discussion on the use of JSON Pointer within JSON Schema in Structuring a complex schema. Note that this should be used only when the entire string contains only JSON Pointer content, e.g. /foo/bar. JSON Pointer URI fragments, e.g. #/foo/bar/ should use "uri-reference".
+"relative-json-pointer": New in draft 7 A relative JSON pointer.
+*/
+```
+
+
+
+
+
+
+<br><br>
+
+#### Regular Expressions (https://json-schema.org/understanding-json-schema/reference/string.html#id16)
+```javascript
+/*
+"regex": New in draft 7 A regular expression, which should be valid according to the ECMA 262 dialect.
+Be careful, in practice, JSON schema validators are only required to accept the safe subset of Regular Expressions described elsewhere in this document.
+*/
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
