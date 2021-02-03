@@ -744,8 +744,8 @@ __________________________________
 # Object (https://json-schema.org/understanding-json-schema/reference/object.html#object)
 - Objects are the mapping type in JSON. They map “keys” to “values”. In JSON, the “keys” must always be strings. Each of these pairs is conventionally referred to as a “property”.
 
-
 <br>
+
 - Example:
 ```javascript
 { "type": "object" }
@@ -790,81 +790,10 @@ __________________________________
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br>
-__________________________________
-__________________________________
 <br><br>
 
-# Properties (http://json-schema.org/understanding-json-schema/reference/object.html#properties)
+
+## Properties (http://json-schema.org/understanding-json-schema/reference/object.html#properties)
 - The properties (key-value pairs) on an object are defined using the properties keyword. The value of properties is an object, where each key is the name of a property and each value is a JSON schema used to validate that property.
 
 <br>
@@ -885,7 +814,7 @@ __________________________________
 
 <br><br>
 
-## additionalProperties
+#### additionalProperties
 - The additionalProperties keyword is used to control the handling of extra stuff, that is, properties whose names are not listed in the properties keyword. By default any additional properties are allowed. The additionalProperties keyword may be either a boolean or an object. If additionalProperties is a boolean and set to false, no additional properties will be allowed.
 
 <br>
@@ -928,7 +857,7 @@ __________________________________
 <br><br>
 
  
-## Required Properties (http://json-schema.org/understanding-json-schema/reference/object.html#id3)
+#### Required Properties (http://json-schema.org/understanding-json-schema/reference/object.html#id3)
 - By default, the properties defined by the properties keyword are not required. However, one can provide a list of required properties using the required keyword. The required keyword takes an array of zero or more strings. Each of these strings must be unique.
 
 <br>
@@ -969,44 +898,10 @@ __________________________________
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br><br>
 
 
-## Property names (http://json-schema.org/understanding-json-schema/reference/object.html#id4)
+#### Property names (http://json-schema.org/understanding-json-schema/reference/object.html#id4)
 - The names of properties can be validated against a schema, irrespective of their values. This can be useful if you don’t want to enforce specific properties, but you want to make sure that the names of those properties follow a specific convention. You might, for example, want to enforce that all names are valid ASCII tokens so they can be used as attributes in a particular programming language.
 ```javascript
 {
@@ -1032,28 +927,10 @@ __________________________________
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br><br>
 
 
-## Size (http://json-schema.org/understanding-json-schema/reference/object.html#id5)
+#### Size (http://json-schema.org/understanding-json-schema/reference/object.html#id5)
 - The number of properties on an object can be restricted using the minProperties and maxProperties keywords. Each of these must be a non-negative integer.
 ```javascript
 {
@@ -1079,45 +956,10 @@ __________________________________
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br><br>
 
 
-## Dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id6)
+#### Dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id6)
 - The dependencies keyword allows the schema of the object to change based on the presence of certain special properties. There are two forms of dependencies in JSON Schema:
 <br> Property dependencies declare that certain other properties must be present if a given property is present.
 <br> Schema dependencies declare that the schema changes when a given property is present.
@@ -1203,8 +1045,6 @@ In the following example, whenever a credit_card property is provided, a billing
 
 
 
-
-
 <br><br>
 
 
@@ -1255,6 +1095,86 @@ In the following example, whenever a credit_card property is provided, a billing
   "credit_card": 5555555555555555
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
