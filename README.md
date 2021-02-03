@@ -157,7 +157,9 @@ __________________________________
 
 # string (https://json-schema.org/understanding-json-schema/reference/string.html#string)
 - In Python, "string" is analogous to the unicode type on Python 2.x, and the str type on Python 3.x.
+
 <br>
+
 - Example:
 ```javascript
 { "type": "string" }
@@ -167,7 +169,9 @@ __________________________________
 
 
 ## Length (https://json-schema.org/understanding-json-schema/reference/string.html#id5)
+
 <br>
+
 - Example:
 ```javascript
 {
@@ -193,7 +197,9 @@ __________________________________
 
 ## Regular Expressions (https://json-schema.org/understanding-json-schema/reference/string.html#id6)
 - The pattern keyword is used to restrict a string to a particular regular expression. The regular expression syntax is the one defined in JavaScript (ECMA 262 specifically). See Regular Expressions for more information.
+
 <br>
+
 - Example:
 ```javascript
 {
@@ -445,7 +451,9 @@ __________________________________
 
 ## integer (https://json-schema.org/understanding-json-schema/reference/numeric.html#id4)
 - The integer type is used for integral numbers.
+
 <br>
+
 - Example:
 ```javascript
 { "type": "integer" }
@@ -475,7 +483,9 @@ __________________________________
 
 ## number (https://json-schema.org/understanding-json-schema/reference/numeric.html#id5)
 - The number type is used for any numeric type, either integers or floating point numbers.
+
 <br>
+
 - Example:
 ```javascript
 { "type": "number" }
@@ -511,7 +521,9 @@ __________________________________
 
 ## Multiples (https://json-schema.org/understanding-json-schema/reference/numeric.html#id6)
 - Numbers can be restricted to a multiple of a given number, using the multipleOf keyword. It may be set to any positive number.
+
 <br>
+
 - Example:
 ```javascript
 {
@@ -971,7 +983,9 @@ __________________________________
 
 #### Property dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id7)
 - Let’s start with the simpler case of property dependencies. For example, suppose we have a schema representing a customer. If you have their credit card number, you also want to ensure you have a billing address. If you don’t have their credit card number, a billing address would not be required. We represent this dependency of one property on another using the dependencies keyword. The value of the dependencies keyword is an object. Each entry in the object maps from the name of a property, p, to an array of strings listing properties that are required whenever p is present.
+
 <br><br>
+
 In the following example, whenever a credit_card property is provided, a billing_address property must also be present:
 ```javascript
 {
