@@ -610,7 +610,7 @@ __________________________________
 
 
 
-
+```
 
 
 /* ---- EXAMPLE #2 ---- */
@@ -766,6 +766,143 @@ __________________________________
 
 /* invalid */
 {"Not": "an array"}
+```
+
+
+
+
+
+
+
+<br><br>
+
+
+
+
+
+# Items (https://json-schema.org/understanding-json-schema/reference/array.html#id4)
+- By default, the elements of the array may be anything at all. However, it’s often useful to validate the items of the array against some schema as well. This is done using the items, additionalItems, and contains keywords. There are two ways in which arrays are generally used in JSON:
+<br> List validation: a sequence of arbitrary length where each item matches the same schema.
+<br> Tuple validation: a sequence of fixed length where each item may have a different schema. In this usage, the index (or location) of each item is meaningful as to how the value is interpreted. (This usage is often given a whole separate type in some programming languages, such as Python’s tuple).
+
+<br><br>
+
+
+
+
+
+## List validation (https://json-schema.org/understanding-json-schema/reference/array.html#id5)
+- List validation is useful for arrays of arbitrary length where each item matches the same schema. For this kind of array, set the items keyword to a single schema that will be used to validate all of the items in the array.
+
+<br>
+
+- Example:
+```javascript
+{
+  "type": "array",
+  "items": {
+    "type": "number"
+  }
+}
+
+// valid
+[1, 2, 3, 4, 5]
+[]
+
+// invalid
+[1, 2, "3", 4, 5]
+
+
+
+
+
+
+
+
+/* contains */
+{
+   "type": "array",
+   "contains": {
+     "type": "number"
+   }
+}
+
+// valid
+["life", "universe", "everything", 42]
+[1, 2, 3, 4, 5]
+
+// invalid
+["life", "universe", "everything", "forty-two"]
+```
+
+
+
+
+
+
+
+
+
+
+## Tuple validation (https://json-schema.org/understanding-json-schema/reference/array.html#id6)
+- Tuple validation is useful when the array is a collection of items where each has a different schema and the ordinal index of each item is meaningful. For example, you may represent a street address such as:
+<br> **1600 Pennsylvania Avenue NW**
+
+<br><br>
+
+Each of these fields will have a different schema:
+<br> number: The address number. Must be a number.
+<br> street_name: The name of the street. Must be a string.
+<br> street_type: The type of street. Should be a string from a fixed set of values.
+<br> direction: The city quadrant of the address. Should be a string from a different set of values.
+
+<br><br>
+
+
+- Example:
+```javascript
+{
+  "type": "array",
+  "items": [
+    {
+      "type": "number"
+    },
+    {
+      "type": "string"
+    },
+    {
+      "type": "string",
+      "enum": ["Street", "Avenue", "Boulevard"]
+    },
+    {
+      "type": "string",
+      "enum": ["NW", "NE", "SW", "SE"]
+    }
+  ]
+}
+
+
+
+/* valid */
+[1600, "Pennsylvania", "Avenue", "NW"]
+
+// It’s okay to not provide all of the items:
+[10, "Downing", "Street"]
+
+// And, by default, it’s also okay to add additional items to end:
+[1600, "Pennsylvania", "Avenue", "NW", "Washington"]
+
+
+
+
+
+/* invalid */
+
+// “Drive” is not one of the acceptable street types:
+[24, "Sussex", "Drive"]
+
+// This address is missing a street number
+["Palais de l'Élysée"]
 
 
 
@@ -782,6 +919,45 @@ __________________________________
 
 
 
+
+
+
+
+/* ---- additionalItems ---- */
+{
+  "type": "array",
+  "items": [
+    {
+      "type": "number"
+    },
+    {
+      "type": "string"
+    },
+    {
+      "type": "string",
+      "enum": ["Street", "Avenue", "Boulevard"]
+    },
+    {
+      "type": "string",
+      "enum": ["NW", "NE", "SW", "SE"]
+    }
+  ],
+  "additionalItems": false
+}
+
+
+/* valid */
+[1600, "Pennsylvania", "Avenue", "NW"]
+
+// It’s ok to not provide all of the items:
+[1600, "Pennsylvania", "Avenue"]
+
+
+
+/* invalid */
+// But, since additionalItems is false, we can’t provide extra items:
+[1600, "Pennsylvania", "Avenue", "NW", "Washington"]
+```
 
 
 
