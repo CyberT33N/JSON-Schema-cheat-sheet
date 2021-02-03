@@ -1874,3 +1874,172 @@ It should be noted that const is merely syntactic sugar for an enum with a singl
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________
+__________________________________
+<br><br>
+
+# Media: string-encoding non-JSON data (https://json-schema.org/understanding-json-schema/reference/non_json_data.html#media-string-encoding-non-json-data)
+- JSON schema has a set of keywords to describe and optionally validate non-JSON data stored inside JSON strings. Since it would be difficult to write validators for many media types, JSON schema validators are not required to validate the contents of JSON strings based on these keywords. At the time of this writing, it appears that most of them do not. However, these keywords are still useful for an application that consumes validated JSON.
+
+
+<br><br>
+
+## contentMediaType (https://json-schema.org/understanding-json-schema/reference/non_json_data.html#id1)
+- The contentMediaType keyword specifies the MIME type of the contents of a string, as described in RFC 2046. There is a list of MIME types officially registered by the IANA, but the set of types supported will be application and operating system dependent. Mozilla Developer Network also maintains a shorter list of MIME types that are important for the web
+
+<br><br>
+
+## contentEncoding (https://json-schema.org/understanding-json-schema/reference/non_json_data.html#id2)
+- The contentEncoding keyword specifies the encoding used to store the contents, as specified in RFC 2054, part 6.1.
+
+<br><br>
+
+The acceptable values are 7bit, 8bit, binary, quoted-printable and base64. If not specified, the encoding is the same as the containing JSON document.
+
+<br><br>
+
+Without getting into the low-level details of each of these encodings, there are really only two options useful for modern usage:
+If the content is encoded in the same encoding as the enclosing JSON document (which for practical purposes, is almost always UTF-8), leave contentEncoding unspecified, and include the content in a string as-is. This includes text-based content types, such as text/html or application/xml.
+
+<br><br>
+
+If the content is binary data, set contentEncoding to base64 and encode the contents using Base64. This would include many image types, such as image/png or audio types, such as audio/mpeg.
+
+
+<br><br>
+
+- Example
+```javascript
+{
+  "type": "string",
+  "contentMediaType": "text/html"
+}
+
+/* valid */
+"<!DOCTYPE html><html xmlns=\"http://www.w3.org/1999/xhtml\"><head></head></html>"
+
+
+
+
+
+
+
+
+
+/* ---- EXAMPLE #2 ---- */
+{
+  "type": "string",
+  "contentEncoding": "base64",
+  "contentMediaType": "image/png"
+}
+
+/* valid */
+"iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA..."
+```
