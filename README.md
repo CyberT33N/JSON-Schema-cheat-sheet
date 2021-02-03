@@ -91,11 +91,65 @@ __________________________________
 
 ## Basic Types:
 - string
+```javascript
+{"type": "string"}
+```
+
+<br>
+
 - number
+```javascript
+{"type": "number"}
+```
+
+<br>
+
 - object
+```javascript
+{"type": "object"}
+```
+
+<br>
+
 - array
+```javascript
+{"type": "array"}
+```
+<br>
+
 - boolean
+```javascript
+{"type": "boolean"}
+
+/* valid */
+true
+false
+
+
+/* invalid */
+"true"
+
+// Values that evaluate to true or false are still not accepted by the schema:
+0
+```
+
+<br>
+
 - null
+```javascript
+{"type": "null"}
+
+/* valid */
+null
+
+/* invalid */
+false
+0
+""
+```
+
+
+
 
 
 
@@ -1583,6 +1637,122 @@ The following is an example for validating street light colors:
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+__________________________________
+__________________________________
+<br><br>
+
+# Generic keywords (https://json-schema.org/understanding-json-schema/reference/generic.html)
+- This chapter lists some miscellaneous properties that are available for all JSON types.
+
+
+<br><br>
+
+
+## Annotations (https://json-schema.org/understanding-json-schema/reference/generic.html#id2)
+- JSON Schema includes a few keywords, title, description, default, examples that aren’t strictly used for validation, but are used to describe parts of a schema.
+
+<br><br>
+
+None of these “annotation” keywords are required, but they are encouraged for good practice, and can make your schema “self-documenting”.
+
+<br><br>
+
+The title and description keywords must be strings. A “title” will preferably be short, whereas a “description” will provide a more lengthy explanation about the purpose of the data described by the schema.
+
+<br><br>
+
+The default keyword specifies a default value for an item. JSON processing tools may use this information to provide a default value for a missing key/value pair, though many JSON schema validators simply ignore the default keyword. It should validate against the schema in which it resides, but that isn’t required.
+
+<br><br>
+
+The examples keyword is a place to provide an array of examples that validate against the schema. This isn’t used for validation, but may help with explaining the effect and purpose of the schema to a reader. Each entry should validate against the schema in which is resides, but that isn’t strictly required. There is no need to duplicate the default value in the examples array, since default will be treated as another example.:
+```javascript
+{
+  "title" : "Match anything",
+  "description" : "This is a schema that matches anything.",
+  "default" : "Default value",
+  "examples" : [
+    "Anything",
+    4035
+  ]
+}
+```
+
+
+
+
+
+
+
+<br><br>
+
+
+## Comments (https://json-schema.org/understanding-json-schema/reference/generic.html#comments)
+- The $comment keyword is strictly intended for adding comments to the JSON schema source. Its value must always be a string. Unlike the annotations title, description and examples, JSON schema implementations aren’t allowed to attach any meaning or behavior to it whatsoever, and may even strip them at any time. Therefore, they are useful for leaving notes to future editors of a JSON schema, (which is quite likely your future self), but should not be used to communicate to users of the schema.
 
 
 
