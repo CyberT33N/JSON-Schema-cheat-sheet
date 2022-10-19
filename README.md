@@ -1090,9 +1090,7 @@ Each of these fields will have a different schema:
 []
 
 // invalid
-[]
-[1]
-[1, 2, 3, 4]
+[1, 2, 2, 3]
 ```
 
 
