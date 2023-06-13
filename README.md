@@ -610,6 +610,14 @@ Be careful, in practice, JSON schema validators are only required to accept the 
 */
 ```
 
+```javascript
+{
+   "type": "string",
+   "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+}
+```
+
+
 
 
 
