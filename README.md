@@ -1,7 +1,7 @@
 # JSON-Schema-cheat-sheet
 [JSON Schema](https://json-schema.org/understanding-json-schema/index.html) Cheat Sheet with the most needed stuff.
 
-Example:
+*Example:*
 ```javascript
 {
   "price": {
@@ -33,7 +33,7 @@ As an example, here an [online validator](https://jsonschemalint.com/#!/version/
 |boolean|`{"type": "boolean"}`|
 |null|`{"type": "null"}`|
 
-Example:
+*Example:*
 
 ```javascript
 {"type": "boolean"}
@@ -71,7 +71,7 @@ false
 #### [integer](https://json-schema.org/understanding-json-schema/reference/numeric.html#id4)
 - The integer type is used for integral numbers.
 
-- Example:
+*Example:*
 ```javascript
 { "type": "integer" }
 
@@ -91,7 +91,7 @@ false
 #### [number](https://json-schema.org/understanding-json-schema/reference/numeric.html#id5)
 - The number type is used for any numeric type, either integers or floating point numbers.
 
-- Example:
+*Example:*
 ```javascript
 { "type": "number" }
 
@@ -116,7 +116,7 @@ false
 
 <br>
 
-- Example:
+*Example:*
 ```javascript
 {
     "type"       : "number",
@@ -143,7 +143,7 @@ false
 <br> x ≤ maximum
 <br> x < exclusiveMaximum
 
-- Example:
+*Example:*
 ```javascript
 /* ---- EXAMPLE #1 ---- */
 {
@@ -200,14 +200,14 @@ false
 # [string](https://json-schema.org/understanding-json-schema/reference/string.html#string)
 - In Python, "string" is analogous to the unicode type on Python 2.x, and the str type on Python 3.x.
 
-- Example:
+*Example:*
 ```javascript
 { "type": "string" }
 ```
 
 ## [Length](https://json-schema.org/understanding-json-schema/reference/string.html#id5)
 
-- Example:
+*Example:*
 ```javascript
 {
   "type": "string",
@@ -227,7 +227,7 @@ false
 ## [Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#id6)
 - The pattern keyword is used to restrict a string to a particular regular expression. The regular expression syntax is the one defined in JavaScript (ECMA 262 specifically). See Regular Expressions for more information.
 
-- Example:
+*Example:*
 ```javascript
 {
    "type": "string",
@@ -324,7 +324,7 @@ Be careful, in practice, JSON schema validators are only required to accept the 
 # [Array](https://json-schema.org/understanding-json-schema/reference/array.html#array)
 - Arrays are used for ordered elements. In JSON, each element in an array may be of a different type.
 
-- Example:
+*Example:*
 ```javascript
 { "type": "array" }
 
@@ -344,7 +344,7 @@ Be careful, in practice, JSON schema validators are only required to accept the 
 ## [List validation](https://json-schema.org/understanding-json-schema/reference/array.html#id5)
 - List validation is useful for arrays of arbitrary length where each item matches the same schema. For this kind of array, set the items keyword to a single schema that will be used to validate all of the items in the array.
 
-- Example:
+*Example:*
 ```javascript
 {
   "type": "array",
@@ -386,7 +386,7 @@ Each of these fields will have a different schema:
 <br> street_type: The type of street. Should be a string from a fixed set of values.
 <br> direction: The city quadrant of the address. Should be a string from a different set of values.
 
-- Example:
+*Example:*
 ```javascript
 {
   "type": "array",
@@ -461,7 +461,7 @@ Each of these fields will have a different schema:
 ## [Length](https://json-schema.org/understanding-json-schema/reference/array.html#id7)
 - The length of the array can be specified using the minItems and maxItems keywords. The value of each keyword must be a non-negative number. These keywords work whether doing List validation or Tuple validation.
 
-- Example:
+*Example:*
 ```javascript
 {
   "type": "array",
@@ -482,7 +482,7 @@ Each of these fields will have a different schema:
 ## [Uniqueness](https://json-schema.org/understanding-json-schema/reference/array.html#id8)
 - A schema can ensure that each of the items in an array is unique. Simply set the uniqueItems keyword to true.
 
-- Example:
+*Example:*
 ```javascript
 {
   "type": "array",
@@ -500,7 +500,7 @@ Each of these fields will have a different schema:
 # [Object](https://json-schema.org/understanding-json-schema/reference/object.html#object)
 - Objects are the mapping type in JSON. They map “keys” to “values”. In JSON, the “keys” must always be strings. Each of these pairs is conventionally referred to as a “property”.
 
-- Example:
+*Example:*
 ```javascript
 { "type": "object" }
 
@@ -540,7 +540,7 @@ Each of these fields will have a different schema:
 ## [Properties](http://json-schema.org/understanding-json-schema/reference/object.html#properties)
 - The properties (key-value pairs) on an object are defined using the properties keyword. The value of properties is an object, where each key is the name of a property and each value is a JSON schema used to validate that property.
 
-- Example:
+*Example:*
 ```javascript
 {
   "type": "object",
@@ -557,7 +557,7 @@ Each of these fields will have a different schema:
 #### additionalProperties
 - The additionalProperties keyword is used to control the handling of extra stuff, that is, properties whose names are not listed in the properties keyword. By default any additional properties are allowed. The additionalProperties keyword may be either a boolean or an object. If additionalProperties is a boolean and set to false, no additional properties will be allowed.
 
-- Example:
+*Example:*
 ```javascript
 {
   "type": "object",
@@ -889,7 +889,7 @@ If the content is encoded in the same encoding as the enclosing JSON document (w
 
 If the content is binary data, set contentEncoding to base64 and encode the contents using Base64. This would include many image types, such as image/png or audio types, such as audio/mpeg.
 
-- Example
+*Example:*
 ```javascript
 {
   "type": "string",
@@ -1078,7 +1078,7 @@ The keywords used to combine schemas are:
 ```
 ## [not](https://json-schema.org/understanding-json-schema/reference/combining.html#id8)
 - This doesn’t strictly combine schemas, but it belongs in this chapter along with other things that help to modify the effect of schemas in some way. The not keyword declares that a instance validates if it doesn’t validate against the given subschema.
-<br><br>
+
 For example, the following schema validates against anything that is not a string:
 ```javascript
 { "not": { "type": "string" } }
