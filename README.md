@@ -27,7 +27,7 @@ Example:
 ## Online
 - https://jsonschemalint.com/#!/version/draft-07/markup/json
 
-# Types (https://json-schema.org/understanding-json-schema/reference/type.html)
+# [Types](https://json-schema.org/understanding-json-schema/reference/type.html)
 
 - Example:
 ```javascript
@@ -88,11 +88,11 @@ false
 { "type": ["number", "string"] }
 ```
 
-### Numeric types (https://json-schema.org/understanding-json-schema/reference/numeric.html#numeric-types)
+### [Numeric types](https://json-schema.org/understanding-json-schema/reference/numeric.html#numeric-types)
 - There are two numeric types in JSON Schema: integer and number. They share the same validation keywords.
 - JSON has no standard way to represent complex numbers, so there is no way to test for them in JSON Schema.
 
-#### integer (https://json-schema.org/understanding-json-schema/reference/numeric.html#id4)
+#### [integer](https://json-schema.org/understanding-json-schema/reference/numeric.html#id4)
 - The integer type is used for integral numbers.
 
 - Example:
@@ -112,7 +112,7 @@ false
 "42"
 ```
 
-#### number (https://json-schema.org/understanding-json-schema/reference/numeric.html#id5)
+#### [number](https://json-schema.org/understanding-json-schema/reference/numeric.html#id5)
 - The number type is used for any numeric type, either integers or floating point numbers.
 
 - Example:
@@ -135,7 +135,7 @@ false
 "42"
 ```
 
-#### Multiples (https://json-schema.org/understanding-json-schema/reference/numeric.html#id6)
+#### [Multiples](https://json-schema.org/understanding-json-schema/reference/numeric.html#id6)
 - Numbers can be restricted to a multiple of a given number, using the multipleOf keyword. It may be set to any positive number.
 
 <br>
@@ -159,7 +159,7 @@ false
 23
 ```
 
-#### Range (https://json-schema.org/understanding-json-schema/reference/numeric.html#id7)
+#### [Range](https://json-schema.org/understanding-json-schema/reference/numeric.html#id7)
 - Ranges of numbers are specified using a combination of the minimum and maximum keywords, (or exclusiveMinimum and exclusiveMaximum for expressing exclusive range).
 - If x is the value being validated, the following must hold true:
 <br> x ≥ minimum
@@ -221,7 +221,7 @@ false
 101
 ```
 
-# string (https://json-schema.org/understanding-json-schema/reference/string.html#string)
+# [string](https://json-schema.org/understanding-json-schema/reference/string.html#string)
 - In Python, "string" is analogous to the unicode type on Python 2.x, and the str type on Python 3.x.
 
 - Example:
@@ -229,7 +229,7 @@ false
 { "type": "string" }
 ```
 
-## Length (https://json-schema.org/understanding-json-schema/reference/string.html#id5)
+## [Length](https://json-schema.org/understanding-json-schema/reference/string.html#id5)
 
 - Example:
 ```javascript
@@ -248,7 +248,7 @@ false
 "ABCD"
 ```
 
-## Regular Expressions (https://json-schema.org/understanding-json-schema/reference/string.html#id6)
+## [Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#id6)
 - The pattern keyword is used to restrict a string to a particular regular expression. The regular expression syntax is the one defined in JavaScript (ECMA 262 specifically). See Regular Expressions for more information.
 
 - Example:
@@ -267,10 +267,10 @@ false
 "(800)FLOWERS"
 ```
 
-## Format (https://json-schema.org/understanding-json-schema/reference/string.html#id7)
+## [Format](https://json-schema.org/understanding-json-schema/reference/string.html#id7)
 - The format keyword allows for basic semantic validation on certain kinds of string values that are commonly used. This allows values to be constrained beyond what the other tools in JSON Schema, including Regular Expressions can do.
 
-#### Dates and times (https://json-schema.org/understanding-json-schema/reference/string.html#id9)
+#### [Dates and times](https://json-schema.org/understanding-json-schema/reference/string.html#id9)
 - Dates and times are represented in RFC 3339, section 5.6. This is a subset of the date format also commonly known as ISO8601 format.
 ```javascript
 /*
@@ -280,7 +280,7 @@ false
 */
 ```
 
-#### Email addresses (https://json-schema.org/understanding-json-schema/reference/string.html#id10)
+#### [Email addresses](https://json-schema.org/understanding-json-schema/reference/string.html#id10)
 ```javascript
 /*
 "email": Internet email address, see RFC 5322, section 3.4.1.
@@ -288,7 +288,7 @@ false
 */
 ```
 
-#### Hostnames (https://json-schema.org/understanding-json-schema/reference/string.html#id11)
+#### [Hostnames](https://json-schema.org/understanding-json-schema/reference/string.html#id11)
 ```javascript
 /*
 "hostname": Internet host name, see RFC 1034, section 3.1.
@@ -296,7 +296,7 @@ false
 */
 ```
 
-#### IP Addresses (https://json-schema.org/understanding-json-schema/reference/string.html#id12)
+#### [IP Addresses](https://json-schema.org/understanding-json-schema/reference/string.html#id12)
 ```javascript
 /*
 "ipv4": IPv4 address, according to dotted-quad ABNF syntax as defined in RFC 2673, section 3.2.
@@ -304,7 +304,7 @@ false
 */
 ```
 
-#### Resource identifiers (https://json-schema.org/understanding-json-schema/reference/string.html#id13)
+#### [Resource identifiers](https://json-schema.org/understanding-json-schema/reference/string.html#id13)
 ```javascript
 /*
 "uri": A universal resource identifier (URI), according to RFC3986.
@@ -315,14 +315,14 @@ If the values in the schema have the ability to be relative to a particular sour
 */
 ```
 
-#### URI template (https://json-schema.org/understanding-json-schema/reference/string.html#id14)
+#### [URI template](https://json-schema.org/understanding-json-schema/reference/string.html#id14)
 ```javascript
 /*
 "uri-template": New in draft 6 A URI Template (of any level) according to RFC6570. If you don’t already know what a URI Template is, you probably don’t need this value.
 */
 ```
 
-#### JSON Pointer (https://json-schema.org/understanding-json-schema/reference/string.html#id15)
+#### [JSON Pointer](https://json-schema.org/understanding-json-schema/reference/string.html#id15)
 ```javascript
 /*
 "json-pointer": New in draft 6 A JSON Pointer, according to RFC6901. There is more discussion on the use of JSON Pointer within JSON Schema in Structuring a complex schema. Note that this should be used only when the entire string contains only JSON Pointer content, e.g. /foo/bar. JSON Pointer URI fragments, e.g. #/foo/bar/ should use "uri-reference".
@@ -330,7 +330,7 @@ If the values in the schema have the ability to be relative to a particular sour
 */
 ```
 
-#### Regular Expressions (https://json-schema.org/understanding-json-schema/reference/string.html#id16)
+#### [Regular Expressions](https://json-schema.org/understanding-json-schema/reference/string.html#id16)
 ```javascript
 /*
 "regex": New in draft 7 A regular expression, which should be valid according to the ECMA 262 dialect.
@@ -345,7 +345,7 @@ Be careful, in practice, JSON schema validators are only required to accept the 
 }
 ```
 
-# Array (https://json-schema.org/understanding-json-schema/reference/array.html#array)
+# [Array](https://json-schema.org/understanding-json-schema/reference/array.html#array)
 - Arrays are used for ordered elements. In JSON, each element in an array may be of a different type.
 
 - Example:
@@ -360,12 +360,12 @@ Be careful, in practice, JSON schema validators are only required to accept the 
 {"Not": "an array"}
 ```
 
-# Items (https://json-schema.org/understanding-json-schema/reference/array.html#id4)
+# [Items](https://json-schema.org/understanding-json-schema/reference/array.html#id4)
 - By default, the elements of the array may be anything at all. However, it’s often useful to validate the items of the array against some schema as well. This is done using the items, additionalItems, and contains keywords. There are two ways in which arrays are generally used in JSON:
 <br> List validation: a sequence of arbitrary length where each item matches the same schema.
 <br> Tuple validation: a sequence of fixed length where each item may have a different schema. In this usage, the index (or location) of each item is meaningful as to how the value is interpreted. (This usage is often given a whole separate type in some programming languages, such as Python’s tuple).
 
-## List validation (https://json-schema.org/understanding-json-schema/reference/array.html#id5)
+## [List validation](https://json-schema.org/understanding-json-schema/reference/array.html#id5)
 - List validation is useful for arrays of arbitrary length where each item matches the same schema. For this kind of array, set the items keyword to a single schema that will be used to validate all of the items in the array.
 
 - Example:
@@ -400,7 +400,7 @@ Be careful, in practice, JSON schema validators are only required to accept the 
 ["life", "universe", "everything", "forty-two"]
 ```
 
-## Tuple validation (https://json-schema.org/understanding-json-schema/reference/array.html#id6)
+## [Tuple validation](https://json-schema.org/understanding-json-schema/reference/array.html#id6)
 - Tuple validation is useful when the array is a collection of items where each has a different schema and the ordinal index of each item is meaningful. For example, you may represent a street address such as:
 <br> **1600 Pennsylvania Avenue NW**
 
@@ -482,7 +482,7 @@ Each of these fields will have a different schema:
 [1600, "Pennsylvania", "Avenue", "NW", "Washington"]
 ```
 
-## Length (https://json-schema.org/understanding-json-schema/reference/array.html#id7)
+## [Length](https://json-schema.org/understanding-json-schema/reference/array.html#id7)
 - The length of the array can be specified using the minItems and maxItems keywords. The value of each keyword must be a non-negative number. These keywords work whether doing List validation or Tuple validation.
 
 - Example:
@@ -503,7 +503,7 @@ Each of these fields will have a different schema:
 [1, 2, 3, 4]
 ```
 
-## Uniqueness (https://json-schema.org/understanding-json-schema/reference/array.html#id8)
+## [Uniqueness](https://json-schema.org/understanding-json-schema/reference/array.html#id8)
 - A schema can ensure that each of the items in an array is unique. Simply set the uniqueItems keyword to true.
 
 - Example:
@@ -521,7 +521,7 @@ Each of these fields will have a different schema:
 [1, 2, 2, 3]
 ```
 
-# Object (https://json-schema.org/understanding-json-schema/reference/object.html#object)
+# [Object](https://json-schema.org/understanding-json-schema/reference/object.html#object)
 - Objects are the mapping type in JSON. They map “keys” to “values”. In JSON, the “keys” must always be strings. Each of these pairs is conventionally referred to as a “property”.
 
 - Example:
@@ -561,7 +561,7 @@ Each of these fields will have a different schema:
 
 ["An", "array", "not", "an", "object"]
 ```
-## Properties (http://json-schema.org/understanding-json-schema/reference/object.html#properties)
+## [Properties](http://json-schema.org/understanding-json-schema/reference/object.html#properties)
 - The properties (key-value pairs) on an object are defined using the properties keyword. The value of properties is an object, where each key is the name of a property and each value is a JSON schema used to validate that property.
 
 - Example:
@@ -612,7 +612,7 @@ Each of these fields will have a different schema:
 }
 ```
 
-#### Required Properties (http://json-schema.org/understanding-json-schema/reference/object.html#id3)
+#### [Required Properties](http://json-schema.org/understanding-json-schema/reference/object.html#id3)
 - By default, the properties defined by the properties keyword are not required. However, one can provide a list of required properties using the required keyword. The required keyword takes an array of zero or more strings. Each of these strings must be unique.
 
 - In the following example schema defining a user record, we require that each user has a name and e-mail address, but we don’t mind if they don’t provide their address or telephone number:
@@ -642,7 +642,7 @@ Each of these fields will have a different schema:
 }
 ```
 
-#### Property names (http://json-schema.org/understanding-json-schema/reference/object.html#id4)
+#### [Property names](http://json-schema.org/understanding-json-schema/reference/object.html#id4)
 - The names of properties can be validated against a schema, irrespective of their values. This can be useful if you don’t want to enforce specific properties, but you want to make sure that the names of those properties follow a specific convention. You might, for example, want to enforce that all names are valid ASCII tokens so they can be used as attributes in a particular programming language.
 ```javascript
 {
@@ -663,7 +663,7 @@ Each of these fields will have a different schema:
 }
 ```
 
-#### Size (http://json-schema.org/understanding-json-schema/reference/object.html#id5)
+#### [Size](http://json-schema.org/understanding-json-schema/reference/object.html#id5)
 - The number of properties on an object can be restricted using the minProperties and maxProperties keywords. Each of these must be a non-negative integer.
 ```javascript
 {
@@ -682,12 +682,12 @@ Each of these fields will have a different schema:
 { "a": 0, "b": 1, "c": 2 }
 ```
 
-#### Dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id6)
+#### [Dependencies](http://json-schema.org/understanding-json-schema/reference/object.html#id6)
 - The dependencies keyword allows the schema of the object to change based on the presence of certain special properties. There are two forms of dependencies in JSON Schema:
 <br> Property dependencies declare that certain other properties must be present if a given property is present.
 <br> Schema dependencies declare that the schema changes when a given property is present.
 
-#### Property dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id7)
+#### [Property dependencies](http://json-schema.org/understanding-json-schema/reference/object.html#id7)
 - Let’s start with the simpler case of property dependencies. For example, suppose we have a schema representing a customer. If you have their credit card number, you also want to ensure you have a billing address. If you don’t have their credit card number, a billing address would not be required. We represent this dependency of one property on another using the dependencies keyword. The value of the dependencies keyword is an object. Each entry in the object maps from the name of a property, p, to an array of strings listing properties that are required whenever p is present.
 
 In the following example, whenever a credit_card property is provided, a billing_address property must also be present:
@@ -751,7 +751,7 @@ In the following example, whenever a credit_card property is provided, a billing
 }
 ```
 
-#### Schema dependencies (http://json-schema.org/understanding-json-schema/reference/object.html#id8)
+#### [Schema dependencies](http://json-schema.org/understanding-json-schema/reference/object.html#id8)
 - Schema dependencies work like property dependencies, but instead of just specifying other required properties, they can extend the schema to have other constraints. For example, here is another way to write the above:
 ```javascript
 {
@@ -795,10 +795,10 @@ In the following example, whenever a credit_card property is provided, a billing
 }
 ```
 
-# Generic keywords (https://json-schema.org/understanding-json-schema/reference/generic.html)
+# [Generic keywords](https://json-schema.org/understanding-json-schema/reference/generic.html)
 - This chapter lists some miscellaneous properties that are available for all JSON types.
 
-## Annotations (https://json-schema.org/understanding-json-schema/reference/generic.html#id2)
+## [Annotations](https://json-schema.org/understanding-json-schema/reference/generic.html#id2)
 - JSON Schema includes a few keywords, title, description, default, examples that aren’t strictly used for validation, but are used to describe parts of a schema.
 
 None of these “annotation” keywords are required, but they are encouraged for good practice, and can make your schema “self-documenting”.
@@ -822,10 +822,10 @@ The examples keyword is a place to provide an array of examples that validate ag
 ```
 
 
-## Comments (https://json-schema.org/understanding-json-schema/reference/generic.html#comments)
+## [Comments](https://json-schema.org/understanding-json-schema/reference/generic.html#comments)
 - The $comment keyword is strictly intended for adding comments to the JSON schema source. Its value must always be a string. Unlike the annotations title, description and examples, JSON schema implementations aren’t allowed to attach any meaning or behavior to it whatsoever, and may even strip them at any time. Therefore, they are useful for leaving notes to future editors of a JSON schema, (which is quite likely your future self), but should not be used to communicate to users of the schema.
 
-## Enumerated values (https://json-schema.org/understanding-json-schema/reference/generic.html#id4)
+## [Enumerated values](https://json-schema.org/understanding-json-schema/reference/generic.html#id4)
 - The enum keyword is used to restrict a value to a fixed set of values. It must be an array with at least one element, where each element is unique.
 
 The following is an example for validating street light colors:
@@ -871,7 +871,7 @@ null
 null
 ```
 
-## Constant values (https://json-schema.org/understanding-json-schema/reference/generic.html#id5)
+## [Constant values](https://json-schema.org/understanding-json-schema/reference/generic.html#id5)
 - The const keyword is used to restrict a value to a single value. For example, to if you only support shipping to the United States for export reasons:
 
 ```javascript
@@ -896,13 +896,13 @@ It should be noted that const is merely syntactic sugar for an enum with a singl
 { "const": "United States of America" }
 { "enum": [ "United States of America" ] }
 ```
-# Media: string-encoding non-JSON data (https://json-schema.org/understanding-json-schema/reference/non_json_data.html#media-string-encoding-non-json-data)
+# [Media](https://json-schema.org/understanding-json-schema/reference/non_json_data.html#media-string-encoding-non-json-data): string-encoding non-JSON data
 - JSON schema has a set of keywords to describe and optionally validate non-JSON data stored inside JSON strings. Since it would be difficult to write validators for many media types, JSON schema validators are not required to validate the contents of JSON strings based on these keywords. At the time of this writing, it appears that most of them do not. However, these keywords are still useful for an application that consumes validated JSON.
 
-## contentMediaType (https://json-schema.org/understanding-json-schema/reference/non_json_data.html#id1)
+## [contentMediaType](https://json-schema.org/understanding-json-schema/reference/non_json_data.html#id1)
 - The contentMediaType keyword specifies the MIME type of the contents of a string, as described in RFC 2046. There is a list of MIME types officially registered by the IANA, but the set of types supported will be application and operating system dependent. Mozilla Developer Network also maintains a shorter list of MIME types that are important for the web
 
-## contentEncoding (https://json-schema.org/understanding-json-schema/reference/non_json_data.html#id2)
+## [contentEncoding](https://json-schema.org/understanding-json-schema/reference/non_json_data.html#id2)
 - The contentEncoding keyword specifies the encoding used to store the contents, as specified in RFC 2054, part 6.1.
 
 The acceptable values are 7bit, 8bit, binary, quoted-printable and base64. If not specified, the encoding is the same as the containing JSON document.
@@ -933,7 +933,7 @@ If the content is binary data, set contentEncoding to base64 and encode the cont
 /* valid */
 "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA..."
 ```
-# Combining schemas (https://json-schema.org/understanding-json-schema/reference/combining.html#combining-schemas)
+# [Combining schemas](https://json-schema.org/understanding-json-schema/reference/combining.html#combining-schemas)
 - JSON Schema includes a few keywords for combining schemas together. Note that this doesn’t necessarily mean combining schemas from multiple files or JSON trees, though these facilities help to enable that and are described in Structuring a complex schema. Combining schemas may be as simple as allowing a value to be validated against multiple criteria at the same time.
 
 For example, in the following schema, the anyOf keyword is used to say that the given value may be valid against any of the given subschemas. The first subschema requires a string with maximum length 5. The second subschema requires a number with a minimum value of 0. As long as a value validates against either of these schemas, it is considered valid against the entire combined schema.
@@ -959,7 +959,7 @@ The keywords used to combine schemas are:
 - anyOf: Must be valid against any of the subschemas
 - oneOf: Must be valid against exactly one of the subschemas
 
-## allOf (https://json-schema.org/understanding-json-schema/reference/combining.html#id5)
+## [allOf](https://json-schema.org/understanding-json-schema/reference/combining.html#id5)
 - To validate against allOf, the given data must be valid against all of the given subschemas.
 ```javascript
 {
@@ -984,7 +984,7 @@ The keywords used to combine schemas are:
 }
 
 ```
-## allOf (https://json-schema.org/understanding-json-schema/reference/combining.html#id5)
+## [allOf](https://json-schema.org/understanding-json-schema/reference/combining.html#id5)
 - To validate against allOf, the given data must be valid against all of the given subschemas.
 ```javascript
 {
@@ -1060,7 +1060,7 @@ The keywords used to combine schemas are:
 }
 ```
 
-## anyOf (https://json-schema.org/understanding-json-schema/reference/combining.html#anyof)
+## [anyOf](https://json-schema.org/understanding-json-schema/reference/combining.html#anyof)
 - To validate against anyOf, the given data must be valid against any (one or more) of the given subschemas.
 ```javascript
 {
@@ -1078,7 +1078,7 @@ The keywords used to combine schemas are:
 { "Not a": "string or number" }
 ```
 
-## oneOf (https://json-schema.org/understanding-json-schema/reference/combining.html#oneof)
+## [oneOf](https://json-schema.org/understanding-json-schema/reference/combining.html#oneof)
 - To validate against oneOf, the given data must be valid against exactly one of the given subschemas.
 ```javascript
 {
@@ -1100,7 +1100,7 @@ The keywords used to combine schemas are:
 // Multiple of both 5 and 3 is rejected.
 15
 ```
-## not (https://json-schema.org/understanding-json-schema/reference/combining.html#id8)
+## [not](https://json-schema.org/understanding-json-schema/reference/combining.html#id8)
 - This doesn’t strictly combine schemas, but it belongs in this chapter along with other things that help to modify the effect of schemas in some way. The not keyword declares that a instance validates if it doesn’t validate against the given subschema.
 <br><br>
 For example, the following schema validates against anything that is not a string:
@@ -1120,7 +1120,7 @@ For example, the following schema validates against anything that is not a strin
 "I am a string"
 ```
 
-# Applying subschemas conditionally (https://json-schema.org/understanding-json-schema/reference/conditionals.html#applying-subschemas-conditionally)
+# [Applying subschemas conditionally](https://json-schema.org/understanding-json-schema/reference/conditionals.html#applying-subschemas-conditionally)
 - The if, then and else keywords allow the application of a subschema based on the outcome of another schema, much like the if/then/else constructs you’ve probably seen in traditional programming languages. If if is valid, then must also be valid (and else is ignored.) If if is invalid, else must also be valid (and then is ignored).
 
 - For example, let’s say you wanted to write a schema to handle addresses in the United States and Canada. These countries have different postal code formats, and we want to select which format to validate against based on the country. If the address is in the United States, the postal_code field is a “zipcode”: five numeric digits followed by an optional four digit suffix. If the address is in Canada, the postal_code field is a six digit alphanumeric string where letters and numbers alternate.
@@ -1236,13 +1236,13 @@ For example, the following schema validates against anything that is not a strin
 }
 ```
 
-# The $schema keyword (https://json-schema.org/understanding-json-schema/reference/schema.html#the-schema-keyword)
+# The [$schema keyword](https://json-schema.org/understanding-json-schema/reference/schema.html#the-schema-keyword)
 - The $schema keyword is used to declare that a JSON fragment is actually a piece of JSON Schema. It also declares which version of the JSON Schema standard that the schema was written against. It is recommended that all JSON Schemas have a $schema entry, which must be at the root. Therefore most of the time, you’ll want this at the root of your schema:
 ```javascript
 "$schema": "http://json-schema.org/draft/2019-09/schema#"
 ```
 
-## Advanced (https://json-schema.org/understanding-json-schema/reference/schema.html#advanced)
+## [Advanced](https://json-schema.org/understanding-json-schema/reference/schema.html#advanced)
 - You should declare that your schema was written against a specific version of the JSON Schema standard and include the draft name in the path, for example:
 <br> http://json-schema.org/draft/2019-09/schema#
 <br> http://json-schema.org/draft-07/schema#
