@@ -1,8 +1,5 @@
 # JSON-Schema-cheat-sheet
-JSON Schema Cheat Sheet with the most needed stuff..
-
-# DOCS
-- https://json-schema.org/understanding-json-schema/index.html
+[JSON Schema](https://json-schema.org/understanding-json-schema/index.html) Cheat Sheet with the most needed stuff.
 
 Example:
 ```javascript
@@ -15,47 +12,29 @@ Example:
 }
 ```
 
-# For what we use JSON Schema?
-- Validate JSON Documents.
-- Transformation (as example XML to JSON)
+You use JSON Schema for:
+- validate JSON Documents.
+- transformation (as example XML to JSON)
 
-# How does JSON Schema work?
-- You import the JSON Documents & JSON Schema into a Schema Parser which will validate the JSON Document based on the JSON Schema.
+You import the JSON Documents & JSON Schema into a Schema Parser which will validate the JSON Document based on the JSON Schema.
 
-# Schema Validator
-
-## Online
-- https://jsonschemalint.com/#!/version/draft-07/markup/json
+As an example, here an [online validator](https://jsonschemalint.com/#!/version/draft-07/markup/json)
 
 # [Types](https://json-schema.org/understanding-json-schema/reference/type.html)
 
-- Example:
-```javascript
-{"type": "object"}
-```
-
 ## Basic Types:
-- string
-```javascript
-{"type": "string"}
-```
 
-- number
-```javascript
-{"type": "number"}
-```
+|Type|Javascript|
+|------|-------------------|
+|string|`{"type": "string"}`|
+|number|`{"type": "number"}`|
+|object|`{"type": "object"}`|
+|array|`{"type": "array"}`|
+|boolean|`{"type": "boolean"}`|
+|null|`{"type": "null"}`|
 
-- object
-```javascript
-{"type": "object"}
-```
+Example:
 
-- array
-```javascript
-{"type": "array"}
-```
-
-- boolean
 ```javascript
 {"type": "boolean"}
 
@@ -68,10 +47,7 @@ false
 
 // Values that evaluate to true or false are still not accepted by the schema:
 0
-```
 
-- null
-```javascript
 {"type": "null"}
 
 /* valid */
