@@ -1,24 +1,31 @@
-# JSON-Schema-cheat-sheet
+# JSON Schema cheat sheet
+
 [JSON Schema](https://json-schema.org/understanding-json-schema/index.html) Cheat Sheet with the most needed stuff.
 
 *Example:*
 ```javascript
 {
-  "price": {
-    "type": "number",
-    "description": "Price of the good",
-    "example": 0.98
-  }
+	"type": "object",
+	"properties": {
+		"price": {
+			"type": "number",
+			"description": "The price",
+			"examples": [5.0],
+			"default": 0
+		}
+	},
+	"required": [ "price" ]
 }
+
 ```
 
 You use JSON Schema for:
 - validate JSON Documents.
 - transformation (as example XML to JSON)
 
-You import the JSON Documents & JSON Schema into a Schema Parser which will validate the JSON Document based on the JSON Schema.
+You import the JSON Documents & JSON Schema into a schema parser which will validate the JSON Document based on the JSON Schema.
 
-As an example, here an [online validator](https://jsonschemalint.com/#!/version/draft-07/markup/json)
+As an example, here an [online validator](https://extendsclass.com/json-schema-validator.html)
 
 # [Types](https://json-schema.org/understanding-json-schema/reference/type.html)
 
