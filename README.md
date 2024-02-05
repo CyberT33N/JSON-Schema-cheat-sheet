@@ -4,7 +4,7 @@ JSON Schema Cheat Sheet with the most needed stuff..
 <br><br>
 
 # DOCS
-- https://json-schema.org/understanding-json-schema/index.html
+- https://json-schema.org/understanding-json-schema
 
 
 <br><br>
