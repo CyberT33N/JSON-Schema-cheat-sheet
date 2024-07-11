@@ -2645,7 +2645,7 @@ For example, here is another way to write the above:
 <br><br>
 <br><br>
 
-## If-then
+## If-then-else
 - The if, then and else keywords allow the application of a subschema based on the outcome of another schema, much like the if/then/else constructs you’ve probably seen in traditional programming languages. If if is valid, then must also be valid (and else is ignored.) If if is invalid, else must also be valid (and then is ignored).
 
 <br><br>
@@ -2779,6 +2779,31 @@ For example, here is another way to write the above:
 
 
 
+<br><br>
+<br><br>
+
+## Implication
+- https://json-schema.org/understanding-json-schema/reference/conditionals#implication
+- Before Draft 7, you can express an "if-then" conditional using the Schema composition keywords and a boolean algebra concept called "implication". A -> B (pronounced, A implies B) means that if A is true, then B must also be true. It can be expressed as !A || B which can be expressed as a JSON Schema.
+```javascript
+{
+  "type": "object",
+  "properties": {
+    "restaurantType": { "enum": ["fast-food", "sit-down"] },
+    "total": { "type": "number" },
+    "tip": { "type": "number" }
+  },
+  "anyOf": [
+    {
+      "not": {
+        "properties": { "restaurantType": { "const": "sit-down" } },
+        "required": ["restaurantType"]
+      }
+    },
+    { "required": ["tip"] }
+  ]
+}
+```
 
 
 
