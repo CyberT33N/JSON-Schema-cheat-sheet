@@ -2577,7 +2577,75 @@ __________________________________
 __________________________________
 <br><br>
 
-# Applying subschemas conditionally (https://json-schema.org/understanding-json-schema/reference/conditionals.html#applying-subschemas-conditionally)
+# Applying subschemas conditionally
+- https://json-schema.org/understanding-json-schema/reference/conditionals
+
+<br><br>
+<br><br>
+
+## dependentRequired
+The dependentRequired keyword conditionally requires that certain properties must be present if a given property is present in an object. For example, suppose we have a schema representing a customer. If you have their credit card number, you also want to ensure you have a billing address. If you don't have their credit card number, a billing address would not be required. We represent this dependency of one property on another using the dependentRequired keyword. The value of the dependentRequired keyword is an object. Each entry in the object maps from the name of a property, p, to an array of strings listing properties that are required if p is present.
+
+In the following example, whenever a credit_card property is provided, a billing_address property must also be present:
+```javascript
+{
+  "type": "object",
+
+  "properties": {
+    "name": { "type": "string" },
+    "credit_card": { "type": "number" },
+    "billing_address": { "type": "string" }
+  },
+
+  "required": ["name"],
+
+  "dependentRequired": {
+    "credit_card": ["billing_address"]
+  }
+}
+
+```
+
+
+
+
+
+<br><br>
+<br><br>
+
+## dependentSchemas
+- The dependentSchemas keyword conditionally applies a subschema when a given property is present. This schema is applied in the same way allOf(https://json-schema.org/understanding-json-schema/reference/combining#allof) applies schemas. Nothing is merged or extended. Both schemas apply independently.
+
+For example, here is another way to write the above:
+```javascript
+{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "credit_card": { "type": "number" }
+  },
+  "required": ["name"],
+  "dependentSchemas": {
+    "credit_card": {
+      "properties": {
+        "billing_address": { "type": "string" }
+      },
+      "required": ["billing_address"]
+    }
+  }
+}
+
+```
+
+
+
+
+
+
+<br><br>
+<br><br>
+
+## If-then
 - The if, then and else keywords allow the application of a subschema based on the outcome of another schema, much like the if/then/else constructs you’ve probably seen in traditional programming languages. If if is valid, then must also be valid (and else is ignored.) If if is invalid, else must also be valid (and then is ignored).
 
 <br><br>
